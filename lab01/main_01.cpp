@@ -140,43 +140,17 @@ int main(int argc, char* argv[]) {
     string actualWord;
 
     while(file >> actualWord) {
-        //Remove the punctuation mark from the word
-        for (int i = 0; i < actualWord.size(); ++i) {
-            if(actualWord[i] == '.' || actualWord[i] == ',' || actualWord[i] == '!' || actualWord[i] == '?' || actualWord[i] == ':' || actualWord[i] == ';'  || actualWord[i] == '(' || actualWord[i] == ')' || actualWord[i] == '{' || actualWord[i] == '}' || actualWord[i] == '[' || actualWord[i] == ']') {
-                actualWord.erase(i, 1);
-            }
-        }
-        ++countWords[actualWord];
+        string cleanedWord = cleanWord(actualWord);
+        ++countWords[cleanedWord];
     }
+
+    //Write the words with their statistics
+    ///printMap(countWords);
 
     file.close();
 
-    /*for (auto it = countWords.cbegin(); it != countWords.cend(); ++it) {
-        cout<<it->first<<" = " << it->second << endl;
-    }*/
-
-    vector<pair<int, int> > A;
-
-    // Copy key-value pair from Map to vector of pairs
-    for (auto& it : cou) {
-        A.push_back(it);
-    }
-
-    // Sort using comparator function
-    sort(A.begin(), A.end(), cmp);
-
-    // Print the sorted value
-    cout << "The map, sorted by value is: \n";
-    for (auto& it : A) {
-
-        cout << it.first << ' '
-             << it.second << '\n';
-    }
-
-    for (auto it = countWords.cbegin(); it != countWords.cend(); ++it) {
-        cout<<it->first<<" = " << it->second << endl;
-    }
-
+    //Sorting the map
+    sortMap(countWords, n);
 
     return 0;
 }

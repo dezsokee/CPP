@@ -2,6 +2,7 @@
 #define CPP_2022_FUNCTIONS_H
 
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -23,6 +24,10 @@ string decode(string text);
 
 string capitalizeWords(string text);
 
-bool cmp(pair<int, int>& a, pair<int, int>& b);
+string cleanWord(string word);
+
+void sortMap(map<string, int>& M, int n);
+
+void printMap(map<string, int>& M);
 
 #endif //CPP_2022_FUNCTIONS_H

@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <sstream>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -141,6 +142,41 @@ string capitalizeWords(string text) {
 bool cmp(pair<int, int>& a, pair<int, int>& b)
 {
     return a.second < b.second;
+}
+
+string cleanWord(string word) {
+    string characters = ".,:;!?)]}{[(*&^%$#@!~`";
+
+    for (int i = 0; i < word.size()+1; ++i) {
+        word.erase(remove_if(word.begin(), word.end(), [](char c) { return !isalpha(c); } ),word.end());
+    }
+
+    return word;
+}
+
+void sortMap(map<string, int>& M, int n)
+{
+    vector<pair<string, int> > A;
+
+    for (auto& it : M) {
+        A.push_back(it);
+    }
+
+
+    sort(A.begin(), A.end(), [](pair<string, int>& a, pair<string, int>& b) {
+        return a.second > b.second;
+    });
+
+    cout<<"The first 10 word are: "<<endl;
+    for (int i = 0; i < n; ++i) {
+        cout << A[i].first << ' ' << A[i].second << endl;
+    }
+}
+
+void printMap(map<string, int> &M) {
+    for(auto it : M) {
+        cout << it.first << " " << it.second << endl;
+    }
 }
 
 
