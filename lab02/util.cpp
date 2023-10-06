@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Point.h"
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -12,7 +13,24 @@ double distance(const Point &a, const Point &b) {
 }
 
 bool isSquare(const Point &a, const Point &b, const Point &c, const Point &d) {
-    return false;
+    double ab = distance(a, b);
+    double ac = distance(a, c);
+    double ad = distance(a, d);
+    double bc = distance(b, c);
+    double bd = distance(b, d);
+    double cd = distance(c, d);
+
+    if(ab == 0 || ac == 0 || ad == 0 || bc == 0 || bd == 0 || cd == 0) {
+        return false;
+    } else  if ((ab == ad && ab == bc && ab == cd) && (ac == bd)) {
+        return true;
+    } else if  ((ad == ac && ad == bd && ad == bc) && (ab == cd)){
+        return true;
+    } else if  ((ab == bd && ab == ac && ab == cd) && (ad == bc)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 void testIsSquare(const char *filename) {
@@ -54,6 +72,10 @@ void testIsSquare(const char *filename) {
 Point *createArray(int numPoints) {
     Point* points = new Point[numPoints];
 
+    for (int i = 0; i < numPoints; ++i) {
+        points[i] = Point(rand() % 2000, rand() % 2000);
+    }
+
     return points;
 }
 
@@ -77,5 +99,61 @@ bool compPoints (Point a, Point b) {
 
 void sortPoints(Point *points, int numPoints) {
     sort(points, points + numPoints, compPoints);
+}
+
+pair<Point, Point> closestPoints(Point* points, int numPoints) {
+
+    pair<Point, Point> closestPair = make_pair(points[0], points[1]);
+    double minDistance = distance(points[0], points[1]);
+
+    for (int i = 0; i < numPoints; i++) {
+        for (int j = i + 1; j < numPoints; j++) {
+            if (distance(points[i], points[j]) < minDistance) {
+                minDistance = distance(points[i], points[j]);
+                closestPair.first = points[i];
+                closestPair.second = points[j];
+            }
+        }
+    }
+
+    return closestPair;
+}
+
+pair<Point, Point> farthestPoints(Point *points, int numPoints) {
+    pair<Point, Point> farthestPoints = make_pair(points[0], points[1]);
+    double maxDistance = distance(points[0], points[1]);
+
+    for (int i = 0; i < numPoints; i++) {
+        for (int j = i + 1; j < numPoints; j++) {
+            if (distance(points[i], points[j]) > maxDistance) {
+                maxDistance = distance(points[i], points[j]);
+                farthestPoints.first = points[i];
+                farthestPoints.second = points[j];
+            }
+        }
+    }
+
+    return farthestPoints;
+}
+
+Point *farthestPointsFromOrigin(Point *points, int numPoints) {
+    vector<pair <Point, double>> farthestPointsFromOriginVector;
+
+    for (int i = 0; i < numPoints; ++i) {
+        double currentDistance = distance(points[i], Point(0, 0));
+        farthestPointsFromOriginVector.push_back(make_pair(points[i], currentDistance));
+    }
+
+    sort(farthestPointsFromOriginVector.begin(), farthestPointsFromOriginVector.end(), [](pair<Point, double>& a, pair<Point, double>& b) {
+        return a.second > b.second;
+    });
+
+    Point* farthestPointsFromOriginArray = new Point[numPoints];
+
+    for (int i = 0; i < 10; ++i) {
+        farthestPointsFromOriginArray[i] = farthestPointsFromOriginVector[i].first;
+    }
+
+    return farthestPointsFromOriginArray;
 }
 
