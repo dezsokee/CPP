@@ -12,6 +12,8 @@ class PointSet{
     //különböző pontok száma
     int n;
 
+    bool **matrix;
+
     //pontok kozotti tavolsagok
     vector<double> distances;
 
@@ -21,6 +23,8 @@ public:
     //konstruktor: előállítja a points tömböt
     //kiszámítja a pontok közötti távolságokat (tavolsagok tömb),
     PointSet( int n = 100 );
+
+    ~PointSet();
 
     //maximum kiválasztás a tavolsag tömbből
     double maxDistance() const;
@@ -49,5 +53,7 @@ public:
 
     //hány darab különböző távolságot tartalmaz a tavolsagok tömb
     int numDistinctDistances();
+
+    int numDistinctDistances2();
 };
 #endif /* POINTSET_H */

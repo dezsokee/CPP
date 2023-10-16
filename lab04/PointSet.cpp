@@ -10,11 +10,21 @@ PointSet::PointSet(int n) {
     points.reserve(n);
     distances.reserve((n * (n - 1)) / 2);
 
+    matrix= new bool*[M];
+
+    for(int i = 0;i < M;i++) {
+        matrix[i] = new bool[M];
+    }
+
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < M; ++j) {
+            matrix[i][j] = false;
+        }
+    }
+
     random_device rd; // seed the random number generator named rd
     mt19937 mt(rd());
     uniform_int_distribution<int> dist(0, M); // return a number in the given range
-
-    bool exists[M + 1][M + 1] = new bool[M + 1][M + 1]{false};
 
     while(points.size() != n) {
         int x = dist(mt);
@@ -22,15 +32,24 @@ PointSet::PointSet(int n) {
         //ellenorzes, hogy kulonbozo pontok legyenek a tombben
         Point p(x, y);
 
-        if(exists[x][y]) {
+        if(matrix[x][y]) {
             continue;
         } else {
-            exists[x][y] = true;
+            matrix[x][y] = true;
             points.push_back(p);
         }
     }
 
     computeDistances();
+}
+
+//destructor
+PointSet::~PointSet() {
+    for (int i = 0; i < M; ++i) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+    cout<<"Destructor called"<<endl;
 }
 
 void PointSet::computeDistances() {
@@ -92,14 +111,16 @@ int PointSet::numDistinctDistances() {
             count++;
         }
     }
-    vector<double>::iterator ip = unique(distances.begin(), distances.begin() + distances.size());
-
-    for (ip = distances.begin(); ip != distances.end(); ++ip) {
-        cout << *ip << " ";
-    }
-
-
     return count;
+}
+
+int PointSet::numDistinctDistances2() {
+    vector<double>::iterator ip;
+    ip = unique(distances.begin(), distances.begin()+distances.size());
+
+    distances.resize(std::distance(distances.begin(), ip));
+
+    return distances.size();
 }
 
 
