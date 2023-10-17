@@ -1,5 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
+
+#include <iostream>
+
 class List {
 public:
     /* creates an empty list */
@@ -35,6 +38,7 @@ public:
 
     /* prints the contents of this list */
     void print() const;
+
     /* forbid copying of lists */
     List(const List&) = delete;
     List& operator=(const List&) = delete;

@@ -1,4 +1,7 @@
 #include "List.h"
+#include <iostream>
+
+using namespace std;
 
 List::List() {
     first = nullptr;
@@ -65,20 +68,52 @@ void List::remove(int d, List::DeleteFlag df) {
     Node* prev = nullptr;
 
     while(temp) {
-        if (temp->value == d) {
-            if (prev == nullptr) {
-                first = temp->next;
-            } else {
-                prev->next = temp->next;
-            }
-
-            delete temp;
-            nodeCounter--;
-            return;
+        switch (df) {
+            case DeleteFlag::LESS:
+                if (temp->value < d) {
+                    if (prev == nullptr) {
+                        first = temp->next;
+                    } else {
+                        prev->next = temp->next;
+                    }
+                    delete temp;
+                    nodeCounter--;
+                    return;
+                }
+            case DeleteFlag::GREATER:
+                if (temp->value > d) {
+                    if (prev == nullptr) {
+                        first = temp->next;
+                    } else {
+                        prev->next = temp->next;
+                    }
+                    delete temp;
+                    nodeCounter--;
+                    return;
+                }
+            case DeleteFlag::EQUAL:
+                if (temp->value == d) {
+                    if (prev == nullptr) {
+                        first = temp->next;
+                    } else {
+                        prev->next = temp->next;
+                    }
+                    delete temp;
+                    nodeCounter--;
+                    return;
+                }
         }
-
         prev = temp;
         temp = temp->next;
     }
+}
+
+void List::print() const {
+    Node* temp = first;
+    while(temp) {
+        cout << temp->value << " ";
+        temp = temp->next;
+    }
+    std::cout << std::endl;
 
 }
