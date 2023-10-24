@@ -2,6 +2,8 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <random>
+#include <algorithm>
 #include "Quiz.h"
 #include "Question.h"
 
@@ -40,14 +42,24 @@ Quiz::Quiz(const string &name, const string &fileName) {
                 questions.push_back(question);
         }
     }
+
+    srand(time(NULL));
+    unsigned seed = rand();
+    shuffle(this->questions.begin(), this->questions.end(), default_random_engine(seed));
+
+    for (int i = 0; i < this->questions.size(); ++i) {
+        this->questions[i].randomizeAnswers();
+    }
+
     file.close();
 }
 
 void Quiz::printQuestions() {
     for (int i = 0; i < getNumQuestion(); ++i) {
-        cout<<i+1<<". question: "<<getQuestions(i).getText()<<endl;
-        for (int j = 0; j < getQuestions(i).getAnswers().size(); ++j) {
-            cout<<setw(6)<<j+1<<". answer: "<<getQuestions(i).getAnswers()[j].getText()<< " ("<< (getQuestions(i).getAnswers()[j].isCorrect() ? "correct" : "incorrect") <<")"<<endl;
+        cout <<i+1 << ". question: " << getQuestion(i).getText() << endl;
+        for (int j = 0; j < getQuestion(i).getAnswers().size(); ++j) {
+            cout << setw(6) <<j+1 << ". answer: " << getQuestion(i).getAnswers()[j].getText() << " (" << (getQuestion(
+                    i).getAnswers()[j].isCorrect() ? "correct" : "incorrect") << ")" << endl;
         }
     }
 }

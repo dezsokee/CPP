@@ -6,9 +6,16 @@
 using namespace std;
 
 int main() {
-    Quiz quiz("Elso kviz", "data.txt");
+    Quiz quiz("Elso kviz", "my_quiz.txt");
+
+    string nickName;
+    cout<<"Give me your nickname!"<<endl;
+    getline(cin, nickName);
+    cout<<"Welcome " << nickName << "!"<<endl;
 
     cout<<"The quiz has started!"<<endl<<endl;
+    int count = 0;
+
     for (int i = 0; i < quiz.getNumQuestion(); ++i) {
         cout<<i+1 << ". question:"<<quiz.getQuestions()[i].getText()<<endl;
         cout<<setw(6)<<"The answers are:"<<endl;
@@ -16,7 +23,7 @@ int main() {
             cout<<setw(6)<<j+1<<". answer: "<<quiz.getQuestions()[i].getAnswers()[j].getText()<<endl;
         }
 
-        cout<<"Tell me the number of the correct answers!"<<endl;
+        cout<<"Which answers are correct?"<<endl;
         string answer;
         getline(cin, answer);
 
@@ -55,10 +62,13 @@ int main() {
 
         if(ok) {
             cout<<"Correct answer!"<<endl;
+            count++;
         } else {
             cout<<"Incorrect answer!"<<endl;
         }
     }
+
+    cout<<"Your score is: "<<count<<"/"<<quiz.getNumQuestion()<<endl;
 
     return 0;
 }

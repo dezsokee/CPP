@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <random>
+#include <algorithm>
 #include "Answer.h"
 
 using namespace std;
@@ -21,7 +23,7 @@ public:
         return text;
     };
 
-    const vector<Answer> &getAnswers() const {
+    vector<Answer> getAnswers() {
         return answers;
     };
 
@@ -33,6 +35,12 @@ public:
     vector<Answer> setAnswers(vector<Answer> answers) {
         this->answers = answers;
         return answers;
+    };
+
+    void randomizeAnswers() {
+        srand(time(NULL));
+        unsigned seed = rand();
+        shuffle(this->answers.begin(), this->answers.end(), default_random_engine(seed));
     };
 };
 

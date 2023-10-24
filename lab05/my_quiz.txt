@@ -1,0 +1,58 @@
+Q What does DevOps stand for?
+A Device Operations
+A Development and Opportunities
+A Development and Operations
+A Device and Operator
+3
+Q Which of the following is a popular tool used in DevOps for continuous integration?
+A Jira
+A Jenkins
+A Slack
+A Trello
+2
+Q What is the first principle of the Agile Manifesto?
+A Comprehensive documentation
+A Individuals and interactions over processes and tools
+A Contract negotiation
+A Following a plan
+2
+Q In Scrum, what is the length of a sprint?
+A 1 week
+A 3 weeks
+A 2 weeks
+A 4 weeks
+3
+Q What is a 'user story' in Agile methodology?
+A A story told by the user about their experience with the software.
+A A user's feedback about the software.
+A A detailed description of the software's functionalities, written from the perspective of the end user.
+3
+Q What does CI/CD stand for in DevOps?
+A Continuous Input/Continuous Delivery
+A Continuous Integration/Continuous Data
+A Continuous Integration/Continuous Delivery
+A Continuous Input/Continuous Data
+3
+Q What is Kanban in Agile methodology?
+A A type of meeting.
+A A document outlining project requirements.
+A A visual system for managing work as it moves through a process.
+A A software tool.
+3
+Q What is 'velocity' in Scrum?
+A The direction that the development team is moving in.
+A The 'speed' at which a team is developing software.
+A The amount of work a team can handle at once.
+A The time it takes to complete a sprint.
+2
+Q What is a 'burn-down chart' in Scrum?
+A A chart showing the number of bugs found over time.
+A A chart showing work left to do versus time.
+A A chart showing team member performance.
+A A chart showing project costs.
+2
+Q What is 'Docker' in DevOps?
+A A programming language.
+A A tool used to automate the deployment, scaling, and management of applications.
+A A project management methodology.
+2

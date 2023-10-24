@@ -14,7 +14,7 @@ private:
 public:
     Quiz(const string &name, const string &fileName);
 
-    const Question &getQuestions(int index) const {
+    Question getQuestion(int index) {
         if (index < 0 || index >= questions.size())
             throw out_of_range("Index out of range");
         return questions[index];
@@ -28,7 +28,7 @@ public:
         return name;
     };
 
-    const vector<Question> &getQuestions() const {
+    vector<Question> getQuestions() {
         return questions;
     };
 
