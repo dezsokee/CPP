@@ -1,6 +1,6 @@
 #ifndef POINT_H
 #define POINT_H
-#define M 2000
+#define M 100
 
 class Point{
 private:

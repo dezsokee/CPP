@@ -30,9 +30,10 @@ int main() {
         cout<<"Maximum distance: " << pSet.maxDistance()<<endl;
 
         cout<<"Number of distances: " << pSet.numDistances()<<endl;
-        cout<<"Number of distinct distances: " << pSet.numDistinctDistances()<<endl;
+        cout<<"Number of distinct distances: " << pSet.numDistinctDistances2()<<endl;
 
         n = n << 1;
+        cout<<endl;
     }
 
     return 0;

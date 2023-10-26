@@ -10,14 +10,12 @@ PointSet::PointSet(int n) {
     points.reserve(n);
     distances.reserve((n * (n - 1)) / 2);
 
-    matrix= new bool*[M];
+    matrix = new int*[M+1];
+    for (int i = 0; i < M+1; ++i)
+        matrix[i] = new int[M+1];
 
-    for(int i = 0;i < M;i++) {
-        matrix[i] = new bool[M];
-    }
-
-    for (int i = 0; i < M; ++i) {
-        for (int j = 0; j < M; ++j) {
+    for (int i = 0; i < M+1; ++i) {
+        for (int j = 0; j < M+1; ++j) {
             matrix[i][j] = false;
         }
     }
@@ -29,7 +27,7 @@ PointSet::PointSet(int n) {
     while(points.size() != n) {
         int x = dist(mt);
         int y = dist(mt);
-        //ellenorzes, hogy kulonbozo pontok legyenek a tombben
+
         Point p(x, y);
 
         if(matrix[x][y]) {
@@ -43,13 +41,11 @@ PointSet::PointSet(int n) {
     computeDistances();
 }
 
-//destructor
 PointSet::~PointSet() {
-    for (int i = 0; i < M; ++i) {
-        delete[] matrix[i];
-    }
-    delete[] matrix;
-    cout<<"Destructor called"<<endl;
+    for (int i = 0; i < M+1; ++i)
+        delete [] matrix[i];
+    delete [] matrix;
+
 }
 
 void PointSet::computeDistances() {
@@ -122,5 +118,4 @@ int PointSet::numDistinctDistances2() {
 
     return distances.size();
 }
-
 

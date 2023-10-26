@@ -12,7 +12,7 @@ class PointSet{
     //különböző pontok száma
     int n;
 
-    bool **matrix;
+    int** matrix;
 
     //pontok kozotti tavolsagok
     vector<double> distances;
