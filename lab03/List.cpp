@@ -5,6 +5,7 @@ using namespace std;
 
 List::List() {
     first = nullptr;
+    cout<<"List constructor is called!"<<endl;
 }
 
 List::~List() {
@@ -14,6 +15,7 @@ List::~List() {
         first = first->next;
         delete temp;
     }
+    cout<<"List destructor is called!"<<endl;
 }
 
 bool List::exists(int d) const {

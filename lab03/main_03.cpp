@@ -43,7 +43,21 @@ int main() {
     cout<<"After the delete operation: "<<endl;
     list.print();*/
 
+    /*Stack stack(10);
 
+    stack.push(10);
+    stack.push(12);
+    stack.push(14);
+
+    stack.pop();
+    stack.pop();
+    stack.pop();
+
+    if(stack.isEmpty()) {
+        cout<<"The stack is empty"<<endl;
+    } else {
+        cout<<"The stack is not empty"<<endl;
+    }*/
 
     return 0;
 }

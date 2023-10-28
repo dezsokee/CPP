@@ -4,39 +4,23 @@
 using namespace std;
 
 Stack::Stack(int inCapacity) {
-    mCapacity = inCapacity;
-    mElements = new double[mCapacity];
-    mTop = -1;
+    inCapacity = inCapacity;
+    cout<<"Stack constructor is called!"<<endl;
 }
 
 Stack::~Stack() {
-    delete [] mElements;
-}
-
-bool Stack::isFull() const {
-    return mTop == mCapacity - 1;
-}
-
-void Stack::push(double inDouble) {
-    if(isFull()) {
-        cout<<"The stack is full"<<endl;
-        return;
+    while (data.size() != 0) {
+        pop();
     }
-    ++mTop;
-    mElements[mTop] = inDouble;
+    cout<<"Stack destructor is called!"<<endl;
+}
 
+void Stack::push(double e) {
+    data.insertFirst(e);
 }
 
 bool Stack::isEmpty() const {
-    return mTop == -1;
-}
-
-double Stack::top() const {
-    if(isEmpty()) {
-        cout<<"The stack is empty"<<endl;
-        return -1;
-    }
-    return mElements[mTop];
+    return data.empty();
 }
 
 void Stack::pop() {
@@ -44,5 +28,5 @@ void Stack::pop() {
         cout<<"The stack is empty"<<endl;
         return;
     }
-    --mTop;
+    data.removeFirst();
 }
