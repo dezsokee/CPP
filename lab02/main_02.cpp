@@ -7,7 +7,7 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    Point p1(2,3);
+    /*Point p1(2,3);
     p1.print();
     cout<<endl;
 
@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
         cout<<"The points form a square."<<endl;
     } else {
         cout<<"The points do not form a square."<<endl;
-    }
+    }*/
 
     srand(time(0));
 
@@ -46,16 +46,16 @@ int main(int argc, char** argv) {
 
     Point * points = createArray(numPoints);
 
-    printArray(points, numPoints);
+   // printArray(points, numPoints);
 
     cout<<"Default:"<<endl;
-    printArray(points, numPoints);
+    //printArray(points, numPoints);
 
     cout<<"The two closest points are: (" << closestPoints(points, numPoints).first.getX() << ", " << closestPoints(points, numPoints).first.getY() << ") and (" << closestPoints(points, numPoints).second.getX() << ", " << closestPoints(points, numPoints).second.getY() << ")" <<endl;
 
     cout<<"The two farthest points are: (" << farthestPoints(points, numPoints).first.getX() << ", " << farthestPoints(points, numPoints).first.getY() << ") and (" << farthestPoints(points, numPoints).second.getX() << ", " << farthestPoints(points, numPoints).second.getY() << ")" <<endl;
 
-    sortPoints(points, numPoints);
+    /*sortPoints(points, numPoints);
 
     cout<<"Sorted points:"<<endl;
     printArray(points, numPoints);
@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
         cout<< "(" << farthestPointsFromOriginArray[i].getX() << ", " << farthestPointsFromOriginArray[i].getY() << ")" << endl;
     }
 
-    deletePoints(points);
+    deletePoints(points);*/
 
     return 0;
 }
