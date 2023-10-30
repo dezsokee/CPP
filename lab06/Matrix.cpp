@@ -91,16 +91,16 @@ Matrix operator+(const Matrix &x, const Matrix &y) {
 
 Matrix operator*(const Matrix &x, const Matrix &y) {
     if(x.mCols != y.mRows || x.mRows <= 0 || x.mCols <= 0 || y.mRows <= 0 || y.mCols <= 0) {
-        throw out_of_range("Can't multiply the matrixes!");
+        throw out_of_range("Can't multiply the matrices!");
     } else {
-        Matrix temp(x.mCols, y.mRows);
+        Matrix temp(x.mRows, y.mCols);
 
         temp.fillMatrix(0);
 
         for (int i = 0; i < x.mRows; ++i) {
             for (int j = 0; j < y.mCols; ++j) {
-                for (int k = 0; k < y.mCols; ++k) {
-                    temp.mElements[i][j] += x.mElements[i][k] * y.mElements[k][j];
+                for (int k = 0; k < x.mCols; ++k) {
+                    temp.mElements[i][j] += (x.mElements[i][k] * y.mElements[k][j]);
                 }
             }
         }
