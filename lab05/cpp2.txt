@@ -1,0 +1,18 @@
+Q Who is designed the STL?
+A Alexander Stepanov
+A Bill Gates
+A Steve Jobs
+A Jeff Bezos
+1
+Q What is the 3 steps of building a program?
+A Preprocessor
+A Compiler
+A Builder
+A Linker
+1 2 4
+Q Which is a correct include statement?
+A &include <iostream>
+A #include "iostream"
+A #include <iostream>
+A #include "fejlec.h"
+3 4

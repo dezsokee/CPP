@@ -2,73 +2,33 @@
 #include <iomanip>
 #include <algorithm>
 #include "Quiz.h"
+#include "QuizGame.h"
 
 using namespace std;
 
 int main() {
-    Quiz quiz("Elso kviz", "my_quiz.txt");
+    User users[] = {User("Peter"), User("Kati")};
 
-    string nickName;
-    cout<<"Give me your nickname!"<<endl;
-    getline(cin, nickName);
-    cout<<"Welcome " << nickName << "!"<<endl;
+    Quiz quizzes[] = {Quiz("The first C++ quiz", "cpp1.txt"), Quiz("The second C++ quiz", "cpp2.txt")};
 
-    cout<<"The quiz has started!"<<endl<<endl;
-    int count = 0;
+    int num_users = sizeof(users) / sizeof(users[0]);
+    int num_quizzes = sizeof(quizzes) / sizeof(quizzes[0]);
 
-    for (int i = 0; i < quiz.getNumQuestion(); ++i) {
-        cout<<i+1 << ". question:"<<quiz.getQuestions()[i].getText()<<endl;
-        cout<<setw(6)<<"The answers are:"<<endl;
-        for (int j = 0; j < quiz.getQuestions()[i].getAnswers().size(); ++j) {
-            cout<<setw(6)<<j+1<<". answer: "<<quiz.getQuestions()[i].getAnswers()[j].getText()<<endl;
-        }
-
-        cout<<"Which answers are correct?"<<endl;
-        string answer;
-        getline(cin, answer);
-
-        int answerNumber;
-        vector<int> answerNumbers;
-        istringstream iss(answer);
-        
-        while (iss >> answerNumber) {
-            if (answerNumber < 1 || answerNumber > quiz.getQuestions()[i].getAnswers().size()) {
-                cout<<"Invalid answer number!"<<endl;
-                continue;
-            }
-            answerNumbers.push_back(answerNumber);
-        }
-
-        vector<int> comparedAnswers;
-        bool ok = true;
-        for(int j = 0; j < quiz.getQuestions()[i].getAnswers().size(); j++) {
-            if(quiz.getQuestions()[i].getAnswers()[j].isCorrect()) {
-                comparedAnswers.push_back(j+1);
-            }
-        }
-
-        sort(comparedAnswers.begin(), comparedAnswers.end());
-        sort(answerNumbers.begin(), answerNumbers.end());
-
-        if(comparedAnswers.size() != answerNumbers.size()) {
-            ok = false;
-        } else {
-            for (int j = 0; j < comparedAnswers.size(); ++j) {
-                if(comparedAnswers[j] != answerNumbers[j]) {
-                    ok = false;
-                }
-            }
-        }
-
-        if(ok) {
-            cout<<"Correct answer!"<<endl;
-            count++;
-        } else {
-            cout<<"Incorrect answer!"<<endl;
+    for (int i = 0; i < num_users; ++i) {
+        for (int j = 0; j < num_quizzes; ++j) {
+            QuizGame game(users[i], quizzes[j]);
+            game.play();
+            cout << "Name: " << game.getUser().getName() << ", score: " <<
+                 game.getScore() << endl << endl;
         }
     }
 
-    cout<<"Your score is: "<<count<<"/"<<quiz.getNumQuestion()<<endl;
+    cout << endl << "****************" << endl;
+    cout << "User's results:" << endl;
+    for (int i = 0; i < num_users; ++i) {
+        cout << users[i] << endl;
+    }
+    cout << "****************" << endl;
 
     return 0;
 }

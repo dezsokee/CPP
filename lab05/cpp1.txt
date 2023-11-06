@@ -1,0 +1,12 @@
+Q How many destructor have one class?
+A Two or three
+A Only one
+A Zero
+A Five or more
+2
+Q What kind of programming styles you can do with C++?
+A General programming
+A Object oriented programming
+A Parallel programming
+A Procedural programming
+1 2 4
