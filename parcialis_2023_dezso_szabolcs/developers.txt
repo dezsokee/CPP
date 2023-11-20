@@ -1,0 +1,7 @@
+John 1000 1
+Jane 2000 2
+Jack 3000 3
+Jill 4000 3
+Joe 5000 3
+Jenny 3000 3
+Jade 2000 1

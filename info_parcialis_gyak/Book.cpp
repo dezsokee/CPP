@@ -6,6 +6,7 @@ const string &Book::getAuthor() const {
 
 const string &Book::getTitle() const {
     return title;
+
 }
 
 int Book::getYear() const {
