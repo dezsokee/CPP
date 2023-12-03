@@ -23,6 +23,8 @@ public:
     int beosztottakSzama() const;
 
     virtual void print(ostream &os) const override;
+
+    Manager();
 };
 
 

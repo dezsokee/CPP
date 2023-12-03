@@ -26,21 +26,15 @@ void Ceg::alkalmazottLevalasztasaManagerrol(Alkalmazott *alkalmazott, Manager *m
 
 void Ceg::osszesAlkalmazott() {
     for_each(alkalmazottak.begin(), alkalmazottak.end(), [] (const Alkalmazott* item) {
-        cout<<item<<endl;
+        cout<<*item<<endl;
     });
 }
 
 void Ceg::csakManagerek() {
-    Alkalmazott* baseAlkalmazott = new Alkalmazott();
-    Manager* actualAlkalmazott = nullptr;
-
-    for(const auto &item : alkalmazottak) {
-        actualAlkalmazott = dynamic_cast<Manager *>(baseAlkalmazott);
+    for_each(alkalmazottak.begin(), alkalmazottak.end(), [] (Alkalmazott* item) {
+        Manager* actualAlkalmazott = dynamic_cast<Manager *>(item);
         if(actualAlkalmazott != nullptr) {
-            cout<<item<<endl;
+            cout<<*item<<endl;
         }
-    }
+    });
 }
-
-
-

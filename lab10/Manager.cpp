@@ -33,5 +33,9 @@ void Manager::deleteAlkalmazottID(int ID) {
     }
 }
 
+Manager::Manager() {
+
+}
+
 
 

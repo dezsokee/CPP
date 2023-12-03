@@ -42,9 +42,39 @@ int main() {
     Alkalmazott alkalmazott6("Tofalvi", "Patrik", 2003, "IT");
     Alkalmazott alkalmazott7("Dezso", "Norbert", 2003, "Marketing");
 
-    Manager manager1("Tofalvi", "Patrik", 2003, "IT");
-    Manager manager2("Tofalvi", "Patrik", 2003, "IT");
-    Manager manager3("Tofalvi", "Patrik", 2003, "IT");
+    Manager manager1("Borbandi", "Szabolcs", 2002, "IT");
+    Manager manager2("Lukacs", "Zsombor", 2002, "IT");
+    Manager manager3("Fazakas", "Roland", 2003, "Marketing");
 
+    ceg1.addAlkalmazott(&alkalmazott1);
+    ceg1.addAlkalmazott(&alkalmazott2);
+    ceg1.addAlkalmazott(&alkalmazott3);
+    ceg1.addAlkalmazott(&alkalmazott4);
+    ceg1.addAlkalmazott(&alkalmazott5);
+    ceg1.addAlkalmazott(&alkalmazott6);
+    ceg1.addAlkalmazott(&alkalmazott7);
+    ceg1.addAlkalmazott(&manager1);
+    ceg1.addAlkalmazott(&manager2);
+    ceg1.addAlkalmazott(&manager3);
+
+    cout<<"Az osszes alkalmazott:"<<endl;
+    ceg1.osszesAlkalmazott();
+
+    manager1.addAlkalmazott(&alkalmazott1);
+    manager1.addAlkalmazott(&alkalmazott2);
+    manager3.addAlkalmazott(&alkalmazott3);
+    manager3.addAlkalmazott(&alkalmazott4);
+    manager3.addAlkalmazott(&alkalmazott7);
+    manager2.addAlkalmazott(&alkalmazott5);
+    manager2.addAlkalmazott(&alkalmazott6);
+
+    cout<<"Csak a managerek"<<endl;
+    ceg1.csakManagerek();
+
+    ceg1.alkalmazottLevalasztasaManagerrol(&alkalmazott1, &manager1);
+    ceg1.alkalmazottHozzarendeleseManagerhez(&alkalmazott1, &manager2);
+
+    cout<<"Csak a managerek modositas utan"<<endl;
+    ceg1.csakManagerek();
     return 0;
 }
