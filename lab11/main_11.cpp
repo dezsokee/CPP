@@ -34,6 +34,7 @@ int main() {
     dao.computeAverage();
     cout <<"Number of passed students: " << dao.numPassed() << endl;
 
+
     StudentService* service = new StudentServiceImpl(&dao);
     cout << "Individual results: " << endl;
     int id = 0;
@@ -44,7 +45,7 @@ int main() {
             break;
         }
         if (!service->isEnrolled(id)) {
-            cout << "Student id=" << id << " not found" << endl;
+            cout << "Student with id=" << id << " is not enrolled." << endl;
             continue;
         }
         cout << "Student id=" << id << " results: " << endl;

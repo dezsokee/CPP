@@ -25,11 +25,11 @@ double StudentServiceImpl::getResultBySubject(int id, const string &subject) con
 }
 
 bool StudentServiceImpl::isEnrolled(int id) const {
-    try {
+    try{
         dao->findById(id);
         return true;
-    } catch (out_of_range &e) {
-        e.what();
+    }
+    catch(out_of_range &e){
         return false;
     }
 }

@@ -68,11 +68,7 @@ int GraduationDao::numPassed() const {
 }
 
 Student GraduationDao::findById(int id) const {
-    try {
-        return students.at(id);
-    } catch (out_of_range& e) {
-        cout<<"Can't find the specific ID!"<<endl;
-    }
+    return students.at(id);
 }
 
 double GraduationDao::getAverageBySubject(const string &subject) const {
