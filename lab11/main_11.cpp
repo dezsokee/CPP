@@ -36,6 +36,7 @@ int main() {
 
 
     StudentService* service = new StudentServiceImpl(&dao);
+
     cout << "Individual results: " << endl;
     int id = 0;
     while (id != -1) {
@@ -48,9 +49,12 @@ int main() {
             cout << "Student with id=" << id << " is not enrolled." << endl;
             continue;
         }
+
         cout << "Student id=" << id << " results: " << endl;
+
         bool passed = service->isPassed(id);
         cout << "\tpassed: " << (passed ? "yes" : "no") << endl;
+
         if (!passed) {
             continue;
         }

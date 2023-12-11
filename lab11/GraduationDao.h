@@ -5,6 +5,7 @@
 
 class GraduationDao {
     int year{2023};
+
     map<int, Student> students;
 public:
     explicit GraduationDao(int year) : year(year) {}
@@ -19,10 +20,11 @@ public:
 
     int numPassed() const;
 
-    // throws out_of_range exception for nonexistent id
     Student findById(int id) const;
 
     double getAverageBySubject(const string &subject) const;
+
+    const map<int, Student> &getStudents() const;
 };
 
 

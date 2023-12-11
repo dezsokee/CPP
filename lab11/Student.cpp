@@ -1,7 +1,6 @@
 #include "Student.h"
 
-Student::Student(int id, const string &firstName, const string &lastName) : id(id), firstName(firstName),
-                                                                            lastName(lastName) {}
+Student::Student(int id, const string &firstName, const string &lastName) : id(id), firstName(firstName), lastName(lastName) {}
 
 int Student::getId() const {
     return id;
@@ -37,7 +36,8 @@ const map<string, double> &Student::getGrades() const {
 
 void Student::computeAverage() {
     double avg = 0;
-    for (auto x: grades) {
+
+    for (const auto &x: grades) {
         if (x.second < 5) {
             return;
         }

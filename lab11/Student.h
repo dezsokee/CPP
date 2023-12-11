@@ -10,9 +10,13 @@ using namespace std;
 class Student {
 private:
     int id;
+
     string firstName;
+
     string lastName;
+
     map<string, double> grades;
+
     double average {0.0};
 public:
     Student(int id, const string &firstName, const string &lastName);
@@ -24,7 +28,6 @@ public:
     const string &getLastName() const;
 
     void addGrade(const string& subject, double grade);
-    // throws out_of_range exception for nonexistent subject
 
     double getGrade(const string& subject);
 

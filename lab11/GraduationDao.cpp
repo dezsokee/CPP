@@ -15,7 +15,6 @@ void GraduationDao::enrollStudents(const string &filename) {
     while (file>>actualID>>actualFirstName>>actualLastName) {
         Student actualStudent(actualID, actualFirstName, actualLastName);
         students.insert({actualID, actualStudent});
-//        students[actualID] = actualStudent;
     }
 
     file.close();
@@ -85,4 +84,8 @@ double GraduationDao::getAverageBySubject(const string &subject) const {
     }
 
     return avg / k;
+}
+
+const map<int, Student> &GraduationDao::getStudents() const {
+    return students;
 }

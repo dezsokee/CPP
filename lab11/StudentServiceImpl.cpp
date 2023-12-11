@@ -44,10 +44,5 @@ double StudentServiceImpl::getAverage(int id) const {
 }
 
 bool StudentServiceImpl::isPassed(int id) const {
-    try {
-        if(dao->findById(id).getAverage() !=0) return true;
-    } catch (out_of_range &e) {
-        e.what();
-        return false;
-    }
+    return dao->findById(id).getAverage();
 }
